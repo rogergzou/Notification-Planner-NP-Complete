@@ -20,8 +20,10 @@
 @property (nonatomic, strong) UIDatePicker *endDatePicker;
 @property (nonatomic, strong) NSArray *totalTimesArray;
 @property (nonatomic, strong) NSArray *frequencyArray;
+
 @property (nonatomic) int totalTimes;
 @property (nonatomic) int frequencyInMins;
+
 
 @end
 
@@ -45,64 +47,39 @@
 
 
 - (IBAction)scheduleNotificationButtonPressed:(id)sender {
+    NSLog(@"%@, %@", self.startDatePicker.date, self.endDatePicker.date);
+    int someOccurNum = abs( [self.endDatePicker.date timeIntervalSinceDate:self.startDatePicker.date]/(60 * self.frequencyInMins) );
+    NSLog(@"first occ %i vs total %i", someOccurNum, self.totalTimes);
+    someOccurNum = (someOccurNum < self.totalTimes) ? someOccurNum : self.totalTimes; //chooses least
     
+    NSLog(@"final occ %i", someOccurNum);
+    if (someOccurNum <= 0) {
+        return;
+    }
+    NSDate *now = [NSDate date];
+    for (int i = 0; i < someOccurNum; i++) {
+        NSLog(@"i %i", i);
+        NSDate *myDate = [self.startDatePicker.date dateByAddingTimeInterval:i*60*self.frequencyInMins];
+        NSLog(@"theDate %@", myDate);
+        if ([myDate compare:now] != NSOrderedAscending)
+            [self scheduleEventWithDate:myDate occurrenceNumber:i];
+    }
 }
 
--(void)scheduleEventWithStartDate:(NSDate *)startDate endDate:(NSDate *)endDate {
-    EKEventStore *eventStore = [[EKEventStore alloc]init];
-    EKEvent *event = [EKEvent eventWithEventStore:eventStore];
-    NSString *cat;
-    
-    event.title = self.eventTitleTextField.text;
-    event.startDate = self.startDate;
-    event.endDate = self.endDate;
-    //event.location for later updates
-    
-    int mins = floor(self.seconds/60);
-    int secs = self.seconds - (mins * 60);
-    int hours = 0;
-    if (mins > 59) {
-        hours = floor(mins/60);
-        mins -= hours * 60;
-    }
-    int pmins = floor(self.pausedSeconds/60);
-    int psecs = floor(self.pausedSeconds - (pmins * 60));
-    int phours = 0;
-    if (pmins > 59) {
-        phours = floor(pmins/60);
-        pmins -= phours * 60;
-    }
-    NSString *timeString;
-    NSString *pTimeString;
-    if (hours == 0)
-        timeString = [NSString stringWithFormat:@"%i:%02i", mins, secs];
-    else
-        timeString = [NSString stringWithFormat:@"%i:%02i:%02i", hours, mins, secs];
-    if (phours == 0)
-        pTimeString = [NSString stringWithFormat:@"%i:%02i", pmins, psecs];
-    else
-        pTimeString = [NSString stringWithFormat:@"%i:%02i:%02i", phours, pmins, psecs];
-    event.notes = [NSString stringWithFormat:@"%@ active, %@ inactive, paused %i times", timeString, pTimeString, self.pauseNumber];
-    [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
-        if (granted) {
-            //user lets calendar access
-            [event setCalendar:[eventStore defaultCalendarForNewEvents]];
-            NSError *err;
-            [eventStore saveEvent:event span:EKSpanThisEvent error:&err];
-            
-        } else {
-            //user no calendar access
-            //NSLog(@"No access :(");
-            UIAlertView *accessAlert = [[UIAlertView alloc]initWithTitle:@"Please allow calendar access for full app functionality" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            // tag for identification when handling
-            accessAlert.tag = calendarAccessMissingAlertTag;
-            [accessAlert show];
-            
-            [event setCalendar:[eventStore defaultCalendarForNewEvents]];
-            NSError *err;
-            [eventStore saveEvent:event span:EKSpanThisEvent error:&err];
-        }
-    }];
+-(void)scheduleEventWithDate:(NSDate *)fireDate occurrenceNumber:(int)occNum{
+
+    UILocalNotification *notif = [[UILocalNotification alloc]init];
+    notif.fireDate = fireDate;
+    notif.timeZone = [NSTimeZone defaultTimeZone];
+    notif.alertBody = [NSString stringWithFormat:@"%@. Occurance # %i", self.eventTitleTextField.text, occNum];
+    notif.alertAction = @"OK";
+    notif.soundName = UILocalNotificationDefaultSoundName;
+    //notif.applicationIconBadgeNumber = 1;
+    //adjust timeString for grammar later
+    //notif.userInfo = @{@"typeKey": @"reminder", @"timeStringKey": timeString};
+    [[UIApplication sharedApplication] scheduleLocalNotification:notif];
+    NSLog(@"scheduled for %@ w/ %@", notif.fireDate, notif.alertBody);
+    //[self.reminderButton setTitle:[NSString stringWithFormat:@"%@", [NSDateFormatter localizedStringFromDate:notificationDate dateStyle:NSDateFormatterNoStyle timeStyle:NSDateFormatterShortStyle]] forState:UIControlStateNormal];
 }
 
 
