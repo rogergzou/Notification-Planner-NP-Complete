@@ -27,7 +27,6 @@
 @property (nonatomic) int totalTimes;
 @property (nonatomic) int frequencyInMins;
 
-
 @end
 
 @implementation ViewController
