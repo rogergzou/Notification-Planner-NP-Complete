@@ -20,9 +20,7 @@
 
 @property (nonatomic, strong) UIDatePicker *startDatePicker;
 @property (nonatomic, strong) UIDatePicker *endDatePicker;
-//@property (nonatomic, strong) NSArray *totalTimesArray;
 @property (nonatomic, strong) NSArray *frequencyArray;
-@property (nonatomic, strong) UIPickerView *totalTimesPicker;
 @property (nonatomic, strong) UIPickerView *frequencyPicker;
 
 @property (nonatomic) int totalTimes;
@@ -53,6 +51,7 @@
 
 - (IBAction)scheduleNotificationButtonPressed:(id)sender {
     NSLog(@"%@, %@", self.startDatePicker.date, self.endDatePicker.date);
+    self.totalTimes = [self.occurenceTextField.text intValue];
     int someOccurNum = abs( [self.endDatePicker.date timeIntervalSinceDate:self.startDatePicker.date]/(60 * self.frequencyInMins) );
     NSLog(@"first occ %i vs total %i", someOccurNum, self.totalTimes);
     someOccurNum = (someOccurNum < self.totalTimes) ? someOccurNum : self.totalTimes; //chooses least
@@ -142,6 +141,12 @@
         self.textField.text = [formatter stringFromDate:datePicker.date];
     else if (datePicker.tag == 1)
         self.endDateTextField.text = [formatter stringFromDate:datePicker.date];
+}
+- (IBAction)startDateEditingEnded:(id)sender {
+    [self dateUpdated:self.startDatePicker];
+}
+- (IBAction)endDateEditingEnded:(id)sender {
+    [self dateUpdated:self.endDatePicker];
 }
 
 
