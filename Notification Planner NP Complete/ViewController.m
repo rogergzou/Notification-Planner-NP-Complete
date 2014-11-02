@@ -125,6 +125,10 @@
     return _frequencyArray;
 }
 
+- (IBAction)eventTextBeganEdits:(id)sender {
+    self.eventTitleTextField.inputView = nil;
+    [self.eventTitleTextField reloadInputViews];
+}
 
 #pragma mark - UIDatePicker methods for UITextFields
 - (IBAction)startDatePickerBeganEdits:(id)sender {
@@ -156,6 +160,7 @@
     self.endDatePicker.tag = 1; //1 for end
     //[startDatePicker addTarget:self action:@selector(dateUpdated:) forControlEvents:UIControlEventValueChanged];
     self.endDateTextField.inputView = self.endDatePicker;
+    
     
 }
 - (UIDatePicker *)makeDatePickerForTextField {
