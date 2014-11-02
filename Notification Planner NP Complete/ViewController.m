@@ -53,8 +53,8 @@
 
 - (IBAction)scheduleNotificationButtonPressed:(id)sender {
     [self doitAll];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
+    //[self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void) doitAll {
     NSLog(@"%@, %@", self.startDatePicker.date, self.endDatePicker.date);
@@ -85,11 +85,11 @@
     
     //add to log
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSArray *arrOfNotifs = [defaults arrayForKey:@"notifArray"];
+    NSMutableArray *arrOfNotifs = [[defaults arrayForKey:@"notifArray"] mutableCopy];
     if (arrOfNotifs) {
-        arrOfNotifs = [arrOfNotifs arrayByAddingObject:[NSKeyedArchiver archivedDataWithRootObject:notif]];
+        [arrOfNotifs insertObject:[NSKeyedArchiver archivedDataWithRootObject:notif] atIndex:0];
     } else {
-        arrOfNotifs = [NSArray arrayWithObject:[NSKeyedArchiver archivedDataWithRootObject:notif]];
+        arrOfNotifs = [NSMutableArray arrayWithObject:[NSKeyedArchiver archivedDataWithRootObject:notif]];
     }
     [defaults setObject:arrOfNotifs forKey:@"notifArray"];
     [defaults synchronize];

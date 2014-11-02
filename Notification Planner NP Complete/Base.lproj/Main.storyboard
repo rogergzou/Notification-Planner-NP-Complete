@@ -3,8 +3,27 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="miso-bold.otf">
+            <string>Miso-Bold</string>
+        </mutableArray>
+        <mutableArray key="miso.otf">
+            <string>Miso</string>
+            <string>Miso</string>
+            <string>Miso</string>
+            <string>Miso</string>
+            <string>Miso</string>
+            <string>Miso</string>
+            <string>Miso</string>
+            <string>Miso</string>
+            <string>Miso</string>
+            <string>Miso</string>
+            <string>Miso</string>
+            <string>Miso</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
-        <!--Root View Controller-->
+        <!--NP Complete-->
         <scene sceneID="WC2-MU-aCl">
             <objects>
                 <tableViewController id="lNh-oH-7zd" customClass="MainPageTableViewController" sceneMemberID="viewController">
@@ -20,19 +39,19 @@
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="notif" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="em4-Za-yQr">
                                             <rect key="frame" x="8" y="8" width="308" height="59"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="Miso" family="Miso" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Freq" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wq1-WJ-aDp">
                                             <rect key="frame" x="362" y="42" width="223" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="Miso" family="Miso" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEl-gI-zHD">
                                             <rect key="frame" x="362" y="12" width="224" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="Miso" family="Miso" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -50,10 +69,10 @@
                             <outlet property="delegate" destination="lNh-oH-7zd" id="BVf-0y-Qdi"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="JmJ-Hq-XNj">
+                    <navigationItem key="navigationItem" title="NP Complete" id="JmJ-Hq-XNj">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="4q4-rG-OWw">
                             <connections>
-                                <segue destination="vXZ-lx-hvc" kind="presentation" id="XSK-k0-CWg"/>
+                                <segue destination="vXZ-lx-hvc" kind="show" id="moP-YF-LE0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -92,18 +111,18 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Occurences" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e2b-7O-vvh">
                                 <rect key="frame" x="16" y="340" width="93" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Miso" family="Miso" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZNW-t5-OhR">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZNW-t5-OhR">
                                 <rect key="frame" x="119" y="336" width="209" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Miso" family="Miso" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tnw-mO-EGH">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tnw-mO-EGH">
                                 <rect key="frame" x="119" y="383" width="209" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Miso" family="Miso" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="frequencyEditingEnded:" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="Y63-X3-Wjd"/>
@@ -111,33 +130,25 @@
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Frequency" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8zJ-Ey-6bl">
                                 <rect key="frame" x="16" y="386" width="81" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Miso" family="Miso" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="message" translatesAutoresizingMaskIntoConstraints="NO" id="HWf-Cc-YHA">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="message" translatesAutoresizingMaskIntoConstraints="NO" id="HWf-Cc-YHA">
                                 <rect key="frame" x="16" y="61" width="312" height="131"/>
                                 <color key="backgroundColor" red="0.95686274510000002" green="0.73962906100000003" blue="0.75225102050000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Miso" family="Miso" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8SZ-Z7-zPK">
                                 <rect key="frame" x="16" y="227" width="78" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Miso" family="Miso" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="moe-hK-4ET">
-                                <rect key="frame" x="119" y="223" width="209" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="startDateEditingEnded:" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="MS3-cG-3zV"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="azz-eV-AAN">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="azz-eV-AAN">
                                 <rect key="frame" x="119" y="275" width="209" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Miso" family="Miso" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="endDateEditingEnded:" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="qBb-x5-nTD"/>
@@ -145,20 +156,36 @@
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="End Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dyh-kE-faU">
                                 <rect key="frame" x="16" y="279" width="71" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Miso" family="Miso" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="dID-qk-lKu">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="dID-qk-lKu">
                                 <rect key="frame" x="146" y="454" width="85" height="66"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Miso-Bold" family="Miso" pointSize="22"/>
                                 <state key="normal" title="Schedule Notification"/>
                                 <connections>
                                     <action selector="scheduleNotificationButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="b63-3e-AeL"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="moe-hK-4ET">
+                                <rect key="frame" x="119" y="223" width="209" height="30"/>
+                                <fontDescription key="fontDescription" name="Miso" family="Miso" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="startDateEditingEnded:" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="MS3-cG-3zV"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="azz-eV-AAN" firstAttribute="top" relation="greaterThanOrEqual" secondItem="moe-hK-4ET" secondAttribute="bottom" constant="9" id="B6k-IQ-U7D"/>
+                            <constraint firstItem="ZNW-t5-OhR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="azz-eV-AAN" secondAttribute="bottom" constant="9" id="JO4-97-PRf"/>
+                            <constraint firstItem="dID-qk-lKu" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Tnw-mO-EGH" secondAttribute="bottom" constant="9" id="PCh-bg-Swh"/>
+                            <constraint firstItem="moe-hK-4ET" firstAttribute="top" relation="greaterThanOrEqual" secondItem="HWf-Cc-YHA" secondAttribute="bottom" constant="9" id="VrR-S6-XRr"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="dID-qk-lKu" secondAttribute="bottom" constant="80" id="bA4-RQ-vop"/>
+                            <constraint firstItem="Tnw-mO-EGH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ZNW-t5-OhR" secondAttribute="bottom" constant="9" id="wZX-5D-T0T"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="endDateTextField" destination="azz-eV-AAN" id="Tuk-ew-qPl"/>

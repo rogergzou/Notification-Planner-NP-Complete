@@ -11,6 +11,9 @@
 		DB0550D01A064DD100390C9E /* notifViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0550CC1A064DD100390C9E /* notifViewController.m */; };
 		DB0550D11A064DD100390C9E /* scheduledNotif.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0550CE1A064DD100390C9E /* scheduledNotif.m */; };
 		DB0550D41A06516A00390C9E /* MainPageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0550D31A06516A00390C9E /* MainPageTableViewController.m */; };
+		DB0550D81A067CC200390C9E /* miso-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB0550D51A067CC200390C9E /* miso-bold.otf */; };
+		DB0550D91A067CC200390C9E /* miso-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB0550D61A067CC200390C9E /* miso-light.otf */; };
+		DB0550DA1A067CC200390C9E /* miso.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB0550D71A067CC200390C9E /* miso.otf */; };
 		DB5ED1BE1A05505000F9C082 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5ED1BD1A05505000F9C082 /* main.m */; };
 		DB5ED1C11A05505000F9C082 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5ED1C01A05505000F9C082 /* AppDelegate.m */; };
 		DB5ED1C41A05505000F9C082 /* Notification_Planner_NP_Complete.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB5ED1C21A05505000F9C082 /* Notification_Planner_NP_Complete.xcdatamodeld */; };
@@ -40,6 +43,9 @@
 		DB0550CE1A064DD100390C9E /* scheduledNotif.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scheduledNotif.m; sourceTree = "<group>"; };
 		DB0550D21A06516A00390C9E /* MainPageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPageTableViewController.h; sourceTree = "<group>"; };
 		DB0550D31A06516A00390C9E /* MainPageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPageTableViewController.m; sourceTree = "<group>"; };
+		DB0550D51A067CC200390C9E /* miso-bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "miso-bold.otf"; sourceTree = "<group>"; };
+		DB0550D61A067CC200390C9E /* miso-light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "miso-light.otf"; sourceTree = "<group>"; };
+		DB0550D71A067CC200390C9E /* miso.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = miso.otf; sourceTree = "<group>"; };
 		DB5ED1B81A05505000F9C082 /* Notification Planner NP Complete.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Notification Planner NP Complete.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB5ED1BC1A05505000F9C082 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB5ED1BD1A05505000F9C082 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -108,6 +114,9 @@
 				DB0550D21A06516A00390C9E /* MainPageTableViewController.h */,
 				DB0550D31A06516A00390C9E /* MainPageTableViewController.m */,
 				DB5ED1C81A05505000F9C082 /* Main.storyboard */,
+				DB0550D51A067CC200390C9E /* miso-bold.otf */,
+				DB0550D61A067CC200390C9E /* miso-light.otf */,
+				DB0550D71A067CC200390C9E /* miso.otf */,
 				DB5ED1CB1A05505000F9C082 /* Images.xcassets */,
 				DB5ED1CD1A05505000F9C082 /* LaunchScreen.xib */,
 				DB5ED1C21A05505000F9C082 /* Notification_Planner_NP_Complete.xcdatamodeld */,
@@ -224,7 +233,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB5ED1CA1A05505000F9C082 /* Main.storyboard in Resources */,
+				DB0550DA1A067CC200390C9E /* miso.otf in Resources */,
 				DB5ED1CF1A05505000F9C082 /* LaunchScreen.xib in Resources */,
+				DB0550D91A067CC200390C9E /* miso-light.otf in Resources */,
+				DB0550D81A067CC200390C9E /* miso-bold.otf in Resources */,
 				DB5ED1CC1A05505000F9C082 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
