@@ -93,7 +93,6 @@
     }
     [defaults setObject:arrOfNotifs forKey:@"notifArray"];
     [defaults synchronize];
-    
 }
 
 -(void)scheduleEventWithDate:(NSDate *)fireDate occurrenceNumber:(int)occNum{
