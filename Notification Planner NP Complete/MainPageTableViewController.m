@@ -31,6 +31,7 @@
 {
     [super viewDidAppear:animated];
     NSLog(@"hi");
+    self.arrOfNotifs = nil;
     [self.tableView reloadData];
 }
 
@@ -52,7 +53,7 @@
     if (!_arrOfNotifs) {
         NSMutableArray *holder = [NSMutableArray array];
         NSArray *store = [[NSUserDefaults standardUserDefaults] arrayForKey:@"notifArray"];
-        if (!store) {
+        if (!store || ![store count]) {
             _arrOfNotifs = [NSArray array];
         } else {
             for (NSData *data in store) {
@@ -62,6 +63,7 @@
             _arrOfNotifs = [NSArray arrayWithArray:holder];
         }
     }
+    NSLog(@"%@", _arrOfNotifs);
     return _arrOfNotifs;
 }
 
@@ -74,6 +76,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
+    NSLog(@"%lu rows", (unsigned long)[self.arrOfNotifs count]);
     return [self.arrOfNotifs count];
 }
 
