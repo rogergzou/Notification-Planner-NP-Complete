@@ -14,7 +14,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *scheduleNotifButton;
 @property (weak, nonatomic) IBOutlet UITextField *textField; //start date
 @property (weak, nonatomic) IBOutlet UITextField *endDateTextField;
-@property (weak, nonatomic) IBOutlet UITextField *eventTitleTextField;
+@property (weak, nonatomic) IBOutlet UITextView *eventTitleTextView;
+//@property (weak, nonatomic) IBOutlet UITextField *eventTitleTextField;
 
 @property (nonatomic, strong) UIDatePicker *startDatePicker;
 @property (nonatomic, strong) UIDatePicker *endDatePicker;
@@ -71,7 +72,7 @@
     UILocalNotification *notif = [[UILocalNotification alloc]init];
     notif.fireDate = fireDate;
     notif.timeZone = [NSTimeZone defaultTimeZone];
-    notif.alertBody = [NSString stringWithFormat:@"%@. Occurance # %i", self.eventTitleTextField.text, occNum];
+    notif.alertBody = [NSString stringWithFormat:@"%@. Occurance # %i", self.eventTitleTextView.text, occNum];
     notif.alertAction = @"OK";
     notif.soundName = UILocalNotificationDefaultSoundName;
     //notif.applicationIconBadgeNumber = 1;
@@ -123,11 +124,6 @@
         _frequencyArray = [NSArray arrayWithArray:holder];
     }
     return _frequencyArray;
-}
-
-- (IBAction)eventTextBeganEdits:(id)sender {
-    self.eventTitleTextField.inputView = nil;
-    [self.eventTitleTextField reloadInputViews];
 }
 
 #pragma mark - UIDatePicker methods for UITextFields

@@ -17,13 +17,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Occurences" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e2b-7O-vvh">
-                                <rect key="frame" x="16" y="168" width="93" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8SZ-Z7-zPK">
-                                <rect key="frame" x="16" y="32" width="78" height="21"/>
+                                <rect key="frame" x="16" y="282" width="93" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -40,58 +34,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PGI-s9-FSQ">
-                                <rect key="frame" x="125" y="98" width="66" height="162"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="FGX-XE-XFI"/>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="EE3-dI-K2B"/>
-                                </connections>
-                            </pickerView>
-                            <pickerView tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xa6-KU-oE0">
-                                <rect key="frame" x="106" y="234" width="120" height="162"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="yeR-Kd-7GJ"/>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="9lD-1r-IiQ"/>
-                                </connections>
-                            </pickerView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="moe-hK-4ET">
-                                <rect key="frame" x="119" y="28" width="209" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="startDatePickerBeganEdits:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="STg-zk-2z2"/>
-                                    <action selector="startDatePickerEndedEdits:" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="Ukb-qV-Np4"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="azz-eV-AAN">
-                                <rect key="frame" x="119" y="80" width="209" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="endDatePickerBeganEdits:" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="WE4-Fs-Zas"/>
-                                    <action selector="endDatePickerEndedEdits:" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="bGG-DO-lBl"/>
-                                </connections>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="End Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dyh-kE-faU">
-                                <rect key="frame" x="16" y="84" width="71" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hp8-lV-G6x">
-                                <rect key="frame" x="62" y="465" width="129" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                <connections>
-                                    <action selector="eventTextBeganEdits:" destination="vXZ-lx-hvc" eventType="editingDidBegin" id="aCc-Op-GxB"/>
-                                </connections>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event title/prompt/text/description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rjX-y0-8aP">
-                                <rect key="frame" x="35" y="436" width="263" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="dID-qk-lKu">
                                 <rect key="frame" x="62" y="519" width="85" height="66"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
@@ -101,17 +43,53 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZNW-t5-OhR">
-                                <rect key="frame" x="119" y="164" width="209" height="30"/>
+                                <rect key="frame" x="119" y="278" width="209" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tnw-mO-EGH">
-                                <rect key="frame" x="119" y="282" width="209" height="30"/>
+                                <rect key="frame" x="119" y="325" width="209" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Frequency" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8zJ-Ey-6bl">
-                                <rect key="frame" x="16" y="285" width="81" height="21"/>
+                                <rect key="frame" x="16" y="328" width="81" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="message" translatesAutoresizingMaskIntoConstraints="NO" id="HWf-Cc-YHA">
+                                <rect key="frame" x="16" y="9" width="344" height="131"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8SZ-Z7-zPK">
+                                <rect key="frame" x="16" y="169" width="78" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="moe-hK-4ET">
+                                <rect key="frame" x="119" y="165" width="209" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="startDatePickerBeganEdits:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="STg-zk-2z2"/>
+                                    <action selector="startDatePickerEndedEdits:" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="Ukb-qV-Np4"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="azz-eV-AAN">
+                                <rect key="frame" x="119" y="217" width="209" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="endDatePickerBeganEdits:" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="WE4-Fs-Zas"/>
+                                    <action selector="endDatePickerEndedEdits:" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="bGG-DO-lBl"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="End Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dyh-kE-faU">
+                                <rect key="frame" x="16" y="221" width="71" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -121,14 +99,14 @@
                     </view>
                     <connections>
                         <outlet property="endDateTextField" destination="azz-eV-AAN" id="6bd-td-dLD"/>
-                        <outlet property="eventTitleTextField" destination="Hp8-lV-G6x" id="zB1-VU-zUP"/>
+                        <outlet property="eventTitleTextView" destination="HWf-Cc-YHA" id="jR5-AZ-hov"/>
                         <outlet property="scheduleNotifButton" destination="dID-qk-lKu" id="Dmo-mL-2EB"/>
                         <outlet property="textField" destination="moe-hK-4ET" id="Irb-kd-YTc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="421" y="415"/>
+            <point key="canvasLocation" x="418" y="442"/>
         </scene>
     </scenes>
 </document>
