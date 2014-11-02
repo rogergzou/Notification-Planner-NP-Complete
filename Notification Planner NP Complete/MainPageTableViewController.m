@@ -52,14 +52,15 @@
     if (!_arrOfNotifs) {
         NSMutableArray *holder = [NSMutableArray array];
         NSArray *store = [[NSUserDefaults standardUserDefaults] arrayForKey:@"notifArray"];
-        for (NSData *data in store) {
-            [holder addObject:[NSKeyedUnarchiver unarchiveObjectWithData:data]];
-            //gets scheduleNotifs
-        }
-        if (!_arrOfNotifs) {
+        if (!store) {
             _arrOfNotifs = [NSArray array];
-        } else
+        } else {
+            for (NSData *data in store) {
+                [holder addObject:[NSKeyedUnarchiver unarchiveObjectWithData:data]];
+                //gets scheduleNotifs
+            }
             _arrOfNotifs = [NSArray arrayWithArray:holder];
+        }
     }
     return _arrOfNotifs;
 }
