@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import <EventKit/EventKit.h>
+#import "ScheduledNotif.h"
 
 @interface ViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 

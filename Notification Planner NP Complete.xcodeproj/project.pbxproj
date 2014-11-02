@@ -15,6 +15,7 @@
 		DB5ED1CC1A05505000F9C082 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB5ED1CB1A05505000F9C082 /* Images.xcassets */; };
 		DB5ED1CF1A05505000F9C082 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB5ED1CD1A05505000F9C082 /* LaunchScreen.xib */; };
 		DB5ED1DB1A05505000F9C082 /* Notification_Planner_NP_CompleteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5ED1DA1A05505000F9C082 /* Notification_Planner_NP_CompleteTests.m */; };
+		DBBB36341A064B2A0064896D /* ScheduledNotif.m in Sources */ = {isa = PBXBuildFile; fileRef = DBBB36331A064B2A0064896D /* ScheduledNotif.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,8 @@
 		DB5ED1D41A05505000F9C082 /* Notification Planner NP CompleteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Notification Planner NP CompleteTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB5ED1D91A05505000F9C082 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB5ED1DA1A05505000F9C082 /* Notification_Planner_NP_CompleteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Notification_Planner_NP_CompleteTests.m; sourceTree = "<group>"; };
+		DBBB36321A064B2A0064896D /* ScheduledNotif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduledNotif.h; sourceTree = "<group>"; };
+		DBBB36331A064B2A0064896D /* ScheduledNotif.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduledNotif.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +90,8 @@
 				DB5ED1C01A05505000F9C082 /* AppDelegate.m */,
 				DB5ED1C51A05505000F9C082 /* ViewController.h */,
 				DB5ED1C61A05505000F9C082 /* ViewController.m */,
+				DBBB36321A064B2A0064896D /* ScheduledNotif.h */,
+				DBBB36331A064B2A0064896D /* ScheduledNotif.m */,
 				DB5ED1C81A05505000F9C082 /* Main.storyboard */,
 				DB5ED1CB1A05505000F9C082 /* Images.xcassets */,
 				DB5ED1CD1A05505000F9C082 /* LaunchScreen.xib */,
@@ -224,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB5ED1C11A05505000F9C082 /* AppDelegate.m in Sources */,
+				DBBB36341A064B2A0064896D /* ScheduledNotif.m in Sources */,
 				DB5ED1BE1A05505000F9C082 /* main.m in Sources */,
 				DB5ED1C71A05505000F9C082 /* ViewController.m in Sources */,
 				DB5ED1C41A05505000F9C082 /* Notification_Planner_NP_Complete.xcdatamodeld in Sources */,
@@ -419,6 +425,7 @@
 				DB5ED1E01A05505000F9C082 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DB5ED1E11A05505000F9C082 /* Build configuration list for PBXNativeTarget "Notification Planner NP CompleteTests" */ = {
 			isa = XCConfigurationList;
@@ -427,6 +434,7 @@
 				DB5ED1E31A05505000F9C082 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
