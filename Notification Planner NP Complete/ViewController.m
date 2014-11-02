@@ -15,12 +15,15 @@
 @property (weak, nonatomic) IBOutlet UITextField *textField; //start date
 @property (weak, nonatomic) IBOutlet UITextField *endDateTextField;
 @property (weak, nonatomic) IBOutlet UITextView *eventTitleTextView;
-//@property (weak, nonatomic) IBOutlet UITextField *eventTitleTextField;
+@property (weak, nonatomic) IBOutlet UITextField *occurenceTextField;
+@property (weak, nonatomic) IBOutlet UITextField *frequencyTextField;
 
 @property (nonatomic, strong) UIDatePicker *startDatePicker;
 @property (nonatomic, strong) UIDatePicker *endDatePicker;
 @property (nonatomic, strong) NSArray *totalTimesArray;
 @property (nonatomic, strong) NSArray *frequencyArray;
+@property (nonatomic, strong) UIPickerView *totalTimesPicker;
+@property (nonatomic, strong) UIPickerView *frequencyPicker;
 
 @property (nonatomic) int totalTimes;
 @property (nonatomic) int frequencyInMins;
@@ -35,6 +38,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     //self.scheduleNotifButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
     //self.scheduleNotifButton.titleLabel setTextAlignment
+    [self initializeDateViewsInputView];
     [self initializeTextFieldInputView];
     
     //to resign keyboard. One liner lol. http://stackoverflow.com/questions/5306240/iphone-dismiss-keyboard-when-touching-outside-of-textfield
@@ -126,40 +130,16 @@
     return _frequencyArray;
 }
 
-#pragma mark - UIDatePicker methods for UITextFields
-- (IBAction)startDatePickerBeganEdits:(id)sender {
-    //touch up inside
-    
-    //[self dateUpdated:self.startDatePicker];
-        [self.endDatePicker removeTarget:self action:@selector(dateUpdated:) forControlEvents:UIControlEventValueChanged];
-}
-- (IBAction)endDatePickerBeganEdits:(id)sender {
-    [self.startDatePicker removeTarget:self action:@selector(dateUpdated:) forControlEvents:UIControlEventValueChanged];
-    //[self dateUpdated:self.endDatePicker];
-}
-- (IBAction)startDatePickerEndedEdits:(id)sender {
-    [self dateUpdated:self.startDatePicker];
-    [self.endDatePicker addTarget:self action:@selector(dateUpdated:) forControlEvents:UIControlEventValueChanged];
-}
-- (IBAction)endDatePickerEndedEdits:(id)sender {
-    [self dateUpdated:self.endDatePicker];
-    [self.startDatePicker addTarget:self action:@selector(dateUpdated:) forControlEvents:UIControlEventValueChanged];
-}
-
-//http://stackoverflow.com/questions/23208809/replace-ios7-keyboard-by-a-date-picker-in-tableviewcontroller
-- (void) initializeTextFieldInputView {
-    self.startDatePicker = [self makeDatePickerForTextField];
+- (void)initializeDateViewsInputView
+{
+    self.startDatePicker = [self makeDatePickerForBox];
     self.startDatePicker.tag = 0; //0 for start
-    //[startDatePicker addTarget:self action:@selector(dateUpdated:) forControlEvents:UIControlEventValueChanged];
     self.textField.inputView = self.startDatePicker;
-    self.endDatePicker = [self makeDatePickerForTextField];
+    self.endDatePicker = [self makeDatePickerForBox];
     self.endDatePicker.tag = 1; //1 for end
-    //[startDatePicker addTarget:self action:@selector(dateUpdated:) forControlEvents:UIControlEventValueChanged];
     self.endDateTextField.inputView = self.endDatePicker;
-    
-    
 }
-- (UIDatePicker *)makeDatePickerForTextField {
+- (UIDatePicker *)makeDatePickerForBox {
     UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
     datePicker.datePickerMode = UIDatePickerModeDateAndTime;
     datePicker.minuteInterval = 5;
@@ -175,28 +155,39 @@
         self.endDateTextField.text = [formatter stringFromDate:datePicker.date];
 }
 
+
+#pragma mark - UIDatePicker methods for UITextField of Frequency
+
+//http://stackoverflow.com/questions/23208809/replace-ios7-keyboard-by-a-date-picker-in-tableviewcontroller
+- (void) initializeTextFieldInputView {
+    //self.totalTimesPicker = [self makePickerForTextField];
+    //self.totalTimesPicker.tag = 0; //0 for occ
+    //self.occurenceTextField.inputView = self.totalTimesPicker;
+    
+    self.frequencyPicker = [self makePickerForTextField];
+    //self.frequencyPicker.tag = 1; //1 for freq
+    self.frequencyTextField.inputView = self.frequencyPicker;
+}
+- (UIPickerView *)makePickerForTextField {
+    UIPickerView *picker = [[UIPickerView alloc] initWithFrame:CGRectZero];
+    picker.delegate = self;
+    picker.dataSource = self;
+    picker.backgroundColor = [UIColor whiteColor];
+    return picker;
+}
+
 #pragma mark - UIPickerView DataSource/Delegate
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    if (pickerView.tag == 0)
-        return [self.totalTimesArray count];
-    else if (pickerView.tag == 1)
-        return [self.frequencyArray count];
-    else
-        return 0;
+    return [self.frequencyArray count];
 }
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    if (pickerView.tag == 0)
-        return [self.totalTimesArray[row] stringValue];
-    else if (pickerView.tag == 1) {
-        int mins = [self.frequencyArray[row] intValue];
-        if (mins < 180)
-            return [NSString stringWithFormat:@"%i minutes", mins];
-        else
-            return [NSString stringWithFormat:@"%i hours", mins/60];
-    } else
-        return @"";
+    int mins = [self.frequencyArray[row] intValue];
+    if (mins < 180)
+        return [NSString stringWithFormat:@"%i minutes", mins];
+    else
+        return [NSString stringWithFormat:@"%i hours", mins/60];
 }
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
@@ -204,20 +195,13 @@
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    if (pickerView.tag == 0)
-        self.totalTimes = [self.totalTimesArray[row] intValue];
-    else if (pickerView.tag == 1)
-        self.frequencyInMins = [self.frequencyArray[row] intValue];
+    self.frequencyInMins = [self.frequencyArray[row] intValue];
+    self.frequencyTextField.text = [self pickerView:pickerView titleForRow:row forComponent:component];
 }
 //meh didn't work
 - (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
 {
-    if (pickerView.tag == 0)
-        return 50;
-    else if (pickerView.tag == 1)
-        return 160;
-    else
-        return 0;
+    return 160;
 }
 
 
