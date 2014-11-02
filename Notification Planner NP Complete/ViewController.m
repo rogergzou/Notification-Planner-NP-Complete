@@ -22,6 +22,10 @@
 @property (nonatomic, strong) UIDatePicker *endDatePicker;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+@property (nonatomic, strong) NSArray *totalTimesArray;
+>>>>>>> parent of 7d0c40c... modification of frequency/occurences models
 =======
 @property (nonatomic, strong) NSArray *totalTimesArray;
 >>>>>>> parent of 7d0c40c... modification of frequency/occurences models
