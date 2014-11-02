@@ -40,7 +40,7 @@
 */
 
 #pragma mark - UITableView Delegate/DataSource
-ount];
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -48,7 +48,7 @@ ount];
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.scheduledNotifArray c
+    return [self.scheduledNotifArray count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
