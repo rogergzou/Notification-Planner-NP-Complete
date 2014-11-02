@@ -20,7 +20,7 @@
 
 @property (nonatomic, strong) UIDatePicker *startDatePicker;
 @property (nonatomic, strong) UIDatePicker *endDatePicker;
-@property (nonatomic, strong) NSArray *totalTimesArray;
+//@property (nonatomic, strong) NSArray *totalTimesArray;
 @property (nonatomic, strong) NSArray *frequencyArray;
 @property (nonatomic, strong) UIPickerView *totalTimesPicker;
 @property (nonatomic, strong) UIPickerView *frequencyPicker;
@@ -99,18 +99,7 @@
     if (!_frequencyInMins) _frequencyInMins = 2;
     return _frequencyInMins;
 }
-- (NSArray *)totalTimesArray
-{
-    if (!_totalTimesArray) {
-        NSMutableArray *holder = [NSMutableArray array];
-        for (int i = 1; i < 20; i++) {
-            [holder addObject:@(i)];
-        }
-        [holder addObjectsFromArray:@[@20,@25,@30,@35,@40,@45,@50,@60,@80,@100,@125,@150,@175,@200,@250,@300,@350,@400,@500]]; //slowly increasing in interval
-        _totalTimesArray = [NSArray arrayWithArray:holder];
-    }
-    return _totalTimesArray;
-}
+
 - (NSArray *)frequencyArray
 {
     if (!_frequencyArray) {
@@ -118,13 +107,13 @@
         for (int i = 5; i < 30; i+=5) {
             [holder addObject:@(i)];
         }
-        for (int j = 30; j < 120; j+=15) {
+        for (int j = 30; j < 60; j+=15) {
             [holder addObject:@(j)];
         }
-        for (float k = 120; k < 180; k+=30) {
+        for (float k = 60; k < 180; k+=30) {
             [holder addObject:@(k)];
         }
-        [holder addObjectsFromArray:@[@180,@240,@300,@360,@480,@600,@720,@960,@1200,@1800,@2400]];
+        [holder addObjectsFromArray:@[@180,@240,@360,@540,@720,@1080,@1440,@2160,@2880,@4320,@7200,@10080,@20160,@30240,@40320]];
         _frequencyArray = [NSArray arrayWithArray:holder];
     }
     return _frequencyArray;
@@ -184,10 +173,23 @@
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     int mins = [self.frequencyArray[row] intValue];
-    if (mins < 180)
-        return [NSString stringWithFormat:@"%i minutes", mins];
+    if (mins < 60)
+        return [NSString stringWithFormat:@"Every %i minutes", mins];
+    else if (mins < 180) {
+        //int rem = (mins % 60) / 6; // * 10 / 60
+        if (mins % 60)
+            return [NSString stringWithFormat:@"Every %.1f hours", mins/60.0];
+        else
+            return (mins == 60) ? @"Every hour" : [NSString stringWithFormat:@"Every %i hours", mins/60];
+    }
+    else if (mins < 1440)
+        return [NSString stringWithFormat:@"Every %i hours", mins/60];
+    else if (mins == 2160)
+        return [NSString stringWithFormat:@"Every 1.5 days"];
+    else if (mins < 10080)
+        return (mins == 1440) ? @"Every day" : [NSString stringWithFormat:@"Every %i days", mins/1440];
     else
-        return [NSString stringWithFormat:@"%i hours", mins/60];
+        return (mins == 10080) ? @"Every week" : [NSString stringWithFormat:@"Every %i weeks", mins/10080];
 }
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
@@ -198,11 +200,5 @@
     self.frequencyInMins = [self.frequencyArray[row] intValue];
     self.frequencyTextField.text = [self pickerView:pickerView titleForRow:row forComponent:component];
 }
-//meh didn't work
-- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
-{
-    return 160;
-}
-
 
 @end
