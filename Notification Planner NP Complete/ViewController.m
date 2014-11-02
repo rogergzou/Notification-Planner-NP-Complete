@@ -12,31 +12,22 @@
 @interface ViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *scheduleNotifButton;
+@property (weak, nonatomic) IBOutlet UITextField *textField; //start date
+@property (weak, nonatomic) IBOutlet UITextField *endDateTextField;
 @property (weak, nonatomic) IBOutlet UITextView *eventTitleTextView;
 @property (weak, nonatomic) IBOutlet UITextField *occurenceTextField;
 @property (weak, nonatomic) IBOutlet UITextField *frequencyTextField;
-@property (weak, nonatomic) IBOutlet UIView *startDateView;
-@property (weak, nonatomic) IBOutlet UIView *endDateView;
 
 @property (nonatomic, strong) UIDatePicker *startDatePicker;
 @property (nonatomic, strong) UIDatePicker *endDatePicker;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-@property (nonatomic, strong) NSArray *totalTimesArray;
->>>>>>> parent of 7d0c40c... modification of frequency/occurences models
-=======
-@property (nonatomic, strong) NSArray *totalTimesArray;
->>>>>>> parent of 7d0c40c... modification of frequency/occurences models
-=======
-@property (nonatomic, strong) NSArray *totalTimesArray;
->>>>>>> parent of 7d0c40c... modification of frequency/occurences models
+//@property (nonatomic, strong) NSArray *totalTimesArray;
 @property (nonatomic, strong) NSArray *frequencyArray;
+@property (nonatomic, strong) UIPickerView *totalTimesPicker;
 @property (nonatomic, strong) UIPickerView *frequencyPicker;
 
-@property (nonatomic) unsigned totalTimes;
-@property (nonatomic) unsigned frequencyInMins;
+@property (nonatomic) int totalTimes;
+@property (nonatomic) int frequencyInMins;
+
 
 @end
 
@@ -62,16 +53,16 @@
 
 - (IBAction)scheduleNotificationButtonPressed:(id)sender {
     NSLog(@"%@, %@", self.startDatePicker.date, self.endDatePicker.date);
-    unsigned someOccurNum = abs( [self.endDatePicker.date timeIntervalSinceDate:self.startDatePicker.date]/(60 * self.frequencyInMins) );
-    NSLog(@"first occ %i vs total %u", someOccurNum, self.totalTimes);
+    int someOccurNum = abs( [self.endDatePicker.date timeIntervalSinceDate:self.startDatePicker.date]/(60 * self.frequencyInMins) );
+    NSLog(@"first occ %i vs total %i", someOccurNum, self.totalTimes);
     someOccurNum = (someOccurNum < self.totalTimes) ? someOccurNum : self.totalTimes; //chooses least
     
-    NSLog(@"final occ %u", someOccurNum);
+    NSLog(@"final occ %i", someOccurNum);
     if (someOccurNum <= 0) {
         return;
     }
     NSDate *now = [NSDate date];
-    for (unsigned i = 0; i < someOccurNum; i++) {
+    for (int i = 0; i < someOccurNum; i++) {
         NSLog(@"i %i", i);
         NSDate *myDate = [self.startDatePicker.date dateByAddingTimeInterval:i*60*self.frequencyInMins];
         NSLog(@"theDate %@", myDate);
@@ -80,12 +71,12 @@
     }
 }
 
--(void)scheduleEventWithDate:(NSDate *)fireDate occurrenceNumber:(unsigned)occNum{
+-(void)scheduleEventWithDate:(NSDate *)fireDate occurrenceNumber:(int)occNum{
 
     UILocalNotification *notif = [[UILocalNotification alloc]init];
     notif.fireDate = fireDate;
     notif.timeZone = [NSTimeZone defaultTimeZone];
-    notif.alertBody = [NSString stringWithFormat:@"%@. Occurance # %u", self.eventTitleTextView.text, occNum];
+    notif.alertBody = [NSString stringWithFormat:@"%@. Occurance # %i", self.eventTitleTextView.text, occNum];
     notif.alertAction = @"OK";
     notif.soundName = UILocalNotificationDefaultSoundName;
     //notif.applicationIconBadgeNumber = 1;
@@ -98,28 +89,17 @@
 
 
 //lazy instantiation
--(unsigned)totalTimes
+-(int)totalTimes
 {
     if (!_totalTimes) _totalTimes = 1;
     return _totalTimes;
 }
--(unsigned)frequencyInMins
+-(int)frequencyInMins
 {
     if (!_frequencyInMins) _frequencyInMins = 2;
     return _frequencyInMins;
 }
-- (NSArray *)totalTimesArray
-{
-    if (!_totalTimesArray) {
-        NSMutableArray *holder = [NSMutableArray array];
-        for (int i = 1; i < 20; i++) {
-            [holder addObject:@(i)];
-        }
-        [holder addObjectsFromArray:@[@20,@25,@30,@35,@40,@45,@50,@60,@80,@100,@125,@150,@175,@200,@250,@300,@350,@400,@500]]; //slowly increasing in interval
-        _totalTimesArray = [NSArray arrayWithArray:holder];
-    }
-    return _totalTimesArray;
-}
+
 - (NSArray *)frequencyArray
 {
     if (!_frequencyArray) {
@@ -127,13 +107,13 @@
         for (int i = 5; i < 30; i+=5) {
             [holder addObject:@(i)];
         }
-        for (int j = 30; j < 120; j+=15) {
+        for (int j = 30; j < 60; j+=15) {
             [holder addObject:@(j)];
         }
-        for (float k = 120; k < 180; k+=30) {
+        for (float k = 60; k < 180; k+=30) {
             [holder addObject:@(k)];
         }
-        [holder addObjectsFromArray:@[@180,@240,@300,@360,@480,@600,@720,@960,@1200,@1800,@2400]];
+        [holder addObjectsFromArray:@[@180,@240,@360,@540,@720,@1080,@1440,@2160,@2880,@4320,@7200,@10080,@20160,@30240,@40320]];
         _frequencyArray = [NSArray arrayWithArray:holder];
     }
     return _frequencyArray;
@@ -143,10 +123,10 @@
 {
     self.startDatePicker = [self makeDatePickerForBox];
     self.startDatePicker.tag = 0; //0 for start
-    //self.textField.inputView = self.startDatePicker;
+    self.textField.inputView = self.startDatePicker;
     self.endDatePicker = [self makeDatePickerForBox];
     self.endDatePicker.tag = 1; //1 for end
-    //self.endDateTextField.inputView = self.endDatePicker;
+    self.endDateTextField.inputView = self.endDatePicker;
 }
 - (UIDatePicker *)makeDatePickerForBox {
     UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
@@ -158,10 +138,10 @@
 - (void) dateUpdated:(UIDatePicker *)datePicker {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd 'at' HH:mm"];
-    //if (datePicker.tag == 0)
-     //   self.textField.text = [formatter stringFromDate:datePicker.date];
-    //else if (datePicker.tag == 1)
-       // self.endDateTextField.text = [formatter stringFromDate:datePicker.date];
+    if (datePicker.tag == 0)
+        self.textField.text = [formatter stringFromDate:datePicker.date];
+    else if (datePicker.tag == 1)
+        self.endDateTextField.text = [formatter stringFromDate:datePicker.date];
 }
 
 
@@ -193,10 +173,23 @@
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     int mins = [self.frequencyArray[row] intValue];
-    if (mins < 180)
-        return [NSString stringWithFormat:@"%i minutes", mins];
+    if (mins < 60)
+        return [NSString stringWithFormat:@"Every %i minutes", mins];
+    else if (mins < 180) {
+        //int rem = (mins % 60) / 6; // * 10 / 60
+        if (mins % 60)
+            return [NSString stringWithFormat:@"Every %.1f hours", mins/60.0];
+        else
+            return (mins == 60) ? @"Every hour" : [NSString stringWithFormat:@"Every %i hours", mins/60];
+    }
+    else if (mins < 1440)
+        return [NSString stringWithFormat:@"Every %i hours", mins/60];
+    else if (mins == 2160)
+        return [NSString stringWithFormat:@"Every 1.5 days"];
+    else if (mins < 10080)
+        return (mins == 1440) ? @"Every day" : [NSString stringWithFormat:@"Every %i days", mins/1440];
     else
-        return [NSString stringWithFormat:@"%i hours", mins/60];
+        return (mins == 10080) ? @"Every week" : [NSString stringWithFormat:@"Every %i weeks", mins/10080];
 }
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
@@ -207,11 +200,5 @@
     self.frequencyInMins = [self.frequencyArray[row] intValue];
     self.frequencyTextField.text = [self pickerView:pickerView titleForRow:row forComponent:component];
 }
-//meh didn't work
-- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
-{
-    return 160;
-}
-
 
 @end
