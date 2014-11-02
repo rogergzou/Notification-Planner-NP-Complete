@@ -37,6 +37,9 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+<<<<<<< HEAD
+>>>>>>> parent of 7d0c40c... modification of frequency/occurences models
+=======
 >>>>>>> parent of 7d0c40c... modification of frequency/occurences models
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="dID-qk-lKu">
                                 <rect key="frame" x="62" y="519" width="85" height="66"/>
