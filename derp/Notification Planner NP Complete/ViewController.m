@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import <EventKit/EventKit.h>
-#import "scheduledNotif.h"
+#import "ScheduledNotif.h"
 
 @interface ViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 
@@ -27,14 +27,12 @@
 @property (nonatomic) int totalTimes;
 @property (nonatomic) int frequencyInMins;
 
-
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //NSLog(@"?F");
     // Do any additional setup after loading the view, typically from a nib.
     //self.scheduleNotifButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
     //self.scheduleNotifButton.titleLabel setTextAlignment
@@ -52,11 +50,6 @@
 
 
 - (IBAction)scheduleNotificationButtonPressed:(id)sender {
-    [self doitAll];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-- (void) doitAll {
     NSLog(@"%@, %@", self.startDatePicker.date, self.endDatePicker.date);
     self.totalTimes = [self.occurenceTextField.text intValue];
     int someOccurNum = abs( [self.endDatePicker.date timeIntervalSinceDate:self.startDatePicker.date]/(60 * self.frequencyInMins) );
@@ -75,25 +68,6 @@
         if ([myDate compare:now] != NSOrderedAscending)
             [self scheduleEventWithDate:myDate occurrenceNumber:i];
     }
-    
-    //create notif obj
-    scheduledNotif *notif = [[scheduledNotif alloc]init];
-    notif.message = self.eventTitleTextView.text;
-    notif.startDate = self.startDatePicker.date;
-    notif.occurences = someOccurNum;
-    notif.frequencyInMins = self.frequencyInMins;
-    
-    //add to log
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSArray *arrOfNotifs = [defaults arrayForKey:@"notifArray"];
-    if (arrOfNotifs) {
-        arrOfNotifs = [arrOfNotifs arrayByAddingObject:[NSKeyedArchiver archivedDataWithRootObject:notif]];
-    } else {
-        arrOfNotifs = [NSArray arrayWithObject:[NSKeyedArchiver archivedDataWithRootObject:notif]];
-    }
-    [defaults setObject:arrOfNotifs forKey:@"notifArray"];
-    [defaults synchronize];
-    
 }
 
 -(void)scheduleEventWithDate:(NSDate *)fireDate occurrenceNumber:(int)occNum{
@@ -174,12 +148,6 @@
 - (IBAction)endDateEditingEnded:(id)sender {
     [self dateUpdated:self.endDatePicker];
 }
-- (IBAction)frequencyEditingEnded:(id)sender {
-    if ([self.frequencyTextField.text length] == 0) {
-        self.frequencyTextField.text = @"Every 2 minutes";
-        self.frequencyInMins = 2;
-    }
-}
 
 
 #pragma mark - UIDatePicker methods for UITextField of Frequency
@@ -236,15 +204,6 @@
 {
     self.frequencyInMins = [self.frequencyArray[row] intValue];
     self.frequencyTextField.text = [self pickerView:pickerView titleForRow:row forComponent:component];
-}
-
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    NSLog(@"triggered");
-    // Pass the selected object to the new view controller.
 }
 
 @end

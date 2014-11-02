@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DB0550CF1A064DD100390C9E /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0550CA1A064DD100390C9E /* CustomCell.m */; };
-		DB0550D01A064DD100390C9E /* notifViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0550CC1A064DD100390C9E /* notifViewController.m */; };
-		DB0550D11A064DD100390C9E /* scheduledNotif.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0550CE1A064DD100390C9E /* scheduledNotif.m */; };
-		DB0550D41A06516A00390C9E /* MainPageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0550D31A06516A00390C9E /* MainPageTableViewController.m */; };
+		143899D11A05EA6400B8C532 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 143899D01A05EA6400B8C532 /* CustomCell.m */; };
+		143899DC1A05F1D700B8C532 /* notifViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 143899DB1A05F1D700B8C532 /* notifViewController.m */; };
+		143899DF1A05F41500B8C532 /* scheduledNotif.m in Sources */ = {isa = PBXBuildFile; fileRef = 143899DE1A05F41500B8C532 /* scheduledNotif.m */; };
 		DB5ED1BE1A05505000F9C082 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5ED1BD1A05505000F9C082 /* main.m */; };
 		DB5ED1C11A05505000F9C082 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5ED1C01A05505000F9C082 /* AppDelegate.m */; };
 		DB5ED1C41A05505000F9C082 /* Notification_Planner_NP_Complete.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB5ED1C21A05505000F9C082 /* Notification_Planner_NP_Complete.xcdatamodeld */; };
@@ -19,6 +18,7 @@
 		DB5ED1CC1A05505000F9C082 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB5ED1CB1A05505000F9C082 /* Images.xcassets */; };
 		DB5ED1CF1A05505000F9C082 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB5ED1CD1A05505000F9C082 /* LaunchScreen.xib */; };
 		DB5ED1DB1A05505000F9C082 /* Notification_Planner_NP_CompleteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5ED1DA1A05505000F9C082 /* Notification_Planner_NP_CompleteTests.m */; };
+		DBBB36341A064B2A0064896D /* ScheduledNotif.m in Sources */ = {isa = PBXBuildFile; fileRef = DBBB36331A064B2A0064896D /* ScheduledNotif.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +32,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		DB0550C91A064DD100390C9E /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
-		DB0550CA1A064DD100390C9E /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
-		DB0550CB1A064DD100390C9E /* notifViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = notifViewController.h; sourceTree = "<group>"; };
-		DB0550CC1A064DD100390C9E /* notifViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = notifViewController.m; sourceTree = "<group>"; };
-		DB0550CD1A064DD100390C9E /* scheduledNotif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scheduledNotif.h; sourceTree = "<group>"; };
-		DB0550CE1A064DD100390C9E /* scheduledNotif.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scheduledNotif.m; sourceTree = "<group>"; };
-		DB0550D21A06516A00390C9E /* MainPageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPageTableViewController.h; sourceTree = "<group>"; };
-		DB0550D31A06516A00390C9E /* MainPageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPageTableViewController.m; sourceTree = "<group>"; };
+		143899CF1A05EA6400B8C532 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
+		143899D01A05EA6400B8C532 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
+		143899DA1A05F1D700B8C532 /* notifViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = notifViewController.h; sourceTree = "<group>"; };
+		143899DB1A05F1D700B8C532 /* notifViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = notifViewController.m; sourceTree = "<group>"; };
+		143899DD1A05F41500B8C532 /* scheduledNotif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scheduledNotif.h; sourceTree = "<group>"; };
+		143899DE1A05F41500B8C532 /* scheduledNotif.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scheduledNotif.m; sourceTree = "<group>"; };
 		DB5ED1B81A05505000F9C082 /* Notification Planner NP Complete.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Notification Planner NP Complete.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB5ED1BC1A05505000F9C082 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB5ED1BD1A05505000F9C082 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -54,6 +52,8 @@
 		DB5ED1D41A05505000F9C082 /* Notification Planner NP CompleteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Notification Planner NP CompleteTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB5ED1D91A05505000F9C082 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB5ED1DA1A05505000F9C082 /* Notification_Planner_NP_CompleteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Notification_Planner_NP_CompleteTests.m; sourceTree = "<group>"; };
+		DBBB36321A064B2A0064896D /* ScheduledNotif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduledNotif.h; sourceTree = "<group>"; };
+		DBBB36331A064B2A0064896D /* ScheduledNotif.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduledNotif.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,19 +95,19 @@
 		DB5ED1BA1A05505000F9C082 /* Notification Planner NP Complete */ = {
 			isa = PBXGroup;
 			children = (
+				143899DA1A05F1D700B8C532 /* notifViewController.h */,
+				143899DB1A05F1D700B8C532 /* notifViewController.m */,
 				DB5ED1BF1A05505000F9C082 /* AppDelegate.h */,
 				DB5ED1C01A05505000F9C082 /* AppDelegate.m */,
 				DB5ED1C51A05505000F9C082 /* ViewController.h */,
 				DB5ED1C61A05505000F9C082 /* ViewController.m */,
-				DB0550C91A064DD100390C9E /* CustomCell.h */,
-				DB0550CA1A064DD100390C9E /* CustomCell.m */,
-				DB0550CB1A064DD100390C9E /* notifViewController.h */,
-				DB0550CC1A064DD100390C9E /* notifViewController.m */,
-				DB0550CD1A064DD100390C9E /* scheduledNotif.h */,
-				DB0550CE1A064DD100390C9E /* scheduledNotif.m */,
-				DB0550D21A06516A00390C9E /* MainPageTableViewController.h */,
-				DB0550D31A06516A00390C9E /* MainPageTableViewController.m */,
+				DBBB36321A064B2A0064896D /* ScheduledNotif.h */,
+				DBBB36331A064B2A0064896D /* ScheduledNotif.m */,
 				DB5ED1C81A05505000F9C082 /* Main.storyboard */,
+				143899DD1A05F41500B8C532 /* scheduledNotif.h */,
+				143899DE1A05F41500B8C532 /* scheduledNotif.m */,
+				143899CF1A05EA6400B8C532 /* CustomCell.h */,
+				143899D01A05EA6400B8C532 /* CustomCell.m */,
 				DB5ED1CB1A05505000F9C082 /* Images.xcassets */,
 				DB5ED1CD1A05505000F9C082 /* LaunchScreen.xib */,
 				DB5ED1C21A05505000F9C082 /* Notification_Planner_NP_Complete.xcdatamodeld */,
@@ -243,14 +243,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				143899DF1A05F41500B8C532 /* scheduledNotif.m in Sources */,
 				DB5ED1C11A05505000F9C082 /* AppDelegate.m in Sources */,
-				DB0550D41A06516A00390C9E /* MainPageTableViewController.m in Sources */,
-				DB0550D11A064DD100390C9E /* scheduledNotif.m in Sources */,
+				DBBB36341A064B2A0064896D /* ScheduledNotif.m in Sources */,
 				DB5ED1BE1A05505000F9C082 /* main.m in Sources */,
 				DB5ED1C71A05505000F9C082 /* ViewController.m in Sources */,
-				DB0550D01A064DD100390C9E /* notifViewController.m in Sources */,
+				143899DC1A05F1D700B8C532 /* notifViewController.m in Sources */,
 				DB5ED1C41A05505000F9C082 /* Notification_Planner_NP_Complete.xcdatamodeld in Sources */,
-				DB0550CF1A064DD100390C9E /* CustomCell.m in Sources */,
+				143899D11A05EA6400B8C532 /* CustomCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
