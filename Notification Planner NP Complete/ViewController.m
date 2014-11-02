@@ -12,22 +12,19 @@
 @interface ViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *scheduleNotifButton;
-@property (weak, nonatomic) IBOutlet UITextField *textField; //start date
-@property (weak, nonatomic) IBOutlet UITextField *endDateTextField;
 @property (weak, nonatomic) IBOutlet UITextView *eventTitleTextView;
 @property (weak, nonatomic) IBOutlet UITextField *occurenceTextField;
 @property (weak, nonatomic) IBOutlet UITextField *frequencyTextField;
+@property (weak, nonatomic) IBOutlet UIView *startDateView;
+@property (weak, nonatomic) IBOutlet UIView *endDateView;
 
 @property (nonatomic, strong) UIDatePicker *startDatePicker;
 @property (nonatomic, strong) UIDatePicker *endDatePicker;
-//@property (nonatomic, strong) NSArray *totalTimesArray;
 @property (nonatomic, strong) NSArray *frequencyArray;
-@property (nonatomic, strong) UIPickerView *totalTimesPicker;
 @property (nonatomic, strong) UIPickerView *frequencyPicker;
 
-@property (nonatomic) int totalTimes;
-@property (nonatomic) int frequencyInMins;
-
+@property (nonatomic) unsigned totalTimes;
+@property (nonatomic) unsigned frequencyInMins;
 
 @end
 
@@ -53,16 +50,16 @@
 
 - (IBAction)scheduleNotificationButtonPressed:(id)sender {
     NSLog(@"%@, %@", self.startDatePicker.date, self.endDatePicker.date);
-    int someOccurNum = abs( [self.endDatePicker.date timeIntervalSinceDate:self.startDatePicker.date]/(60 * self.frequencyInMins) );
-    NSLog(@"first occ %i vs total %i", someOccurNum, self.totalTimes);
+    unsigned someOccurNum = abs( [self.endDatePicker.date timeIntervalSinceDate:self.startDatePicker.date]/(60 * self.frequencyInMins) );
+    NSLog(@"first occ %i vs total %u", someOccurNum, self.totalTimes);
     someOccurNum = (someOccurNum < self.totalTimes) ? someOccurNum : self.totalTimes; //chooses least
     
-    NSLog(@"final occ %i", someOccurNum);
+    NSLog(@"final occ %u", someOccurNum);
     if (someOccurNum <= 0) {
         return;
     }
     NSDate *now = [NSDate date];
-    for (int i = 0; i < someOccurNum; i++) {
+    for (unsigned i = 0; i < someOccurNum; i++) {
         NSLog(@"i %i", i);
         NSDate *myDate = [self.startDatePicker.date dateByAddingTimeInterval:i*60*self.frequencyInMins];
         NSLog(@"theDate %@", myDate);
@@ -71,12 +68,12 @@
     }
 }
 
--(void)scheduleEventWithDate:(NSDate *)fireDate occurrenceNumber:(int)occNum{
+-(void)scheduleEventWithDate:(NSDate *)fireDate occurrenceNumber:(unsigned)occNum{
 
     UILocalNotification *notif = [[UILocalNotification alloc]init];
     notif.fireDate = fireDate;
     notif.timeZone = [NSTimeZone defaultTimeZone];
-    notif.alertBody = [NSString stringWithFormat:@"%@. Occurance # %i", self.eventTitleTextView.text, occNum];
+    notif.alertBody = [NSString stringWithFormat:@"%@. Occurance # %u", self.eventTitleTextView.text, occNum];
     notif.alertAction = @"OK";
     notif.soundName = UILocalNotificationDefaultSoundName;
     //notif.applicationIconBadgeNumber = 1;
@@ -89,12 +86,12 @@
 
 
 //lazy instantiation
--(int)totalTimes
+-(unsigned)totalTimes
 {
     if (!_totalTimes) _totalTimes = 1;
     return _totalTimes;
 }
--(int)frequencyInMins
+-(unsigned)frequencyInMins
 {
     if (!_frequencyInMins) _frequencyInMins = 2;
     return _frequencyInMins;
@@ -123,10 +120,10 @@
 {
     self.startDatePicker = [self makeDatePickerForBox];
     self.startDatePicker.tag = 0; //0 for start
-    self.textField.inputView = self.startDatePicker;
+    //self.textField.inputView = self.startDatePicker;
     self.endDatePicker = [self makeDatePickerForBox];
     self.endDatePicker.tag = 1; //1 for end
-    self.endDateTextField.inputView = self.endDatePicker;
+    //self.endDateTextField.inputView = self.endDatePicker;
 }
 - (UIDatePicker *)makeDatePickerForBox {
     UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
@@ -138,10 +135,10 @@
 - (void) dateUpdated:(UIDatePicker *)datePicker {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd 'at' HH:mm"];
-    if (datePicker.tag == 0)
-        self.textField.text = [formatter stringFromDate:datePicker.date];
-    else if (datePicker.tag == 1)
-        self.endDateTextField.text = [formatter stringFromDate:datePicker.date];
+    //if (datePicker.tag == 0)
+     //   self.textField.text = [formatter stringFromDate:datePicker.date];
+    //else if (datePicker.tag == 1)
+       // self.endDateTextField.text = [formatter stringFromDate:datePicker.date];
 }
 
 
